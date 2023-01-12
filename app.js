@@ -21,8 +21,10 @@ const dbScheme = {
     ],
 }
 
-// localStorage.setItem('db', JSON.stringify(dbScheme));
-
+function createDB(){
+    localStorage.setItem('db', JSON.stringify(dbScheme));
+}
+createDB;
 const DB = JSON.parse(localStorage.getItem('db'));
 
 
