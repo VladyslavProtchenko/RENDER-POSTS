@@ -34,7 +34,7 @@ label {
     display: flex;
     flex-direction: column;
 }
-
+/* _____________________ADD_POST__________________________ */
 .post-form {
     background: rgb(255, 255, 255);
     display: flex;
@@ -87,7 +87,7 @@ input:focus,textarea:focus {
     background: rgb(106, 118, 255);;
     color: black
 }
-
+/* _____________________POSTS__________________________ */
 .posts  {
     display: flex;
     flex-direction: column;
@@ -124,7 +124,7 @@ input:focus,textarea:focus {
     background: inherit;
     cursor:pointer;
 }
-
+/* _____________________COMMENTS__________________________ */
 .comments {
     display: flex;
     flex-direction: column;

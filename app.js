@@ -20,19 +20,24 @@ const dbScheme = {
         },
     ],
 }
-
-function createDB(){
-    localStorage.setItem('db', JSON.stringify(dbScheme));
-}
-createDB;
 const DB = JSON.parse(localStorage.getItem('db'));
 
+function createDB(){
+    if(localStorage.getItem('db')) {
+        localStorage.setItem('db', JSON.stringify(DB));
+    }
+    localStorage.setItem('db', JSON.stringify(dbScheme));
+}
+
+
+createDB();
 
 //___________________________________________________VARIABLES____________________________________________________
 const postsHTML = document.querySelector('.posts');
 const buttonSubmit = document.querySelector('.submit');
 const title = document.querySelector(".title");
 const postText = document.querySelector(".content");
+
 
 //_____________________________________________________FORM_CHECKOUT________________________________________________
 buttonSubmit.setAttribute('disabled', true);
@@ -83,8 +88,6 @@ function comemntComponent(text) {
     )
 }
 
-
-
 //___________________________________________________RENDER-POSTS___________________________________________________________
 function renderPosts() {
     postsHTML.innerHTML = null;
@@ -98,6 +101,17 @@ function renderPosts() {
 renderPosts();
 //__________________________________________________ACTIONS__________________________________________________________________
 const posts = document.querySelectorAll('.post');
+function removeComment(){
+    const deleteComment = document.querySelectorAll('.delete-comment');
+
+    function deleter (event){
+    event.target.parentElement.remove();
+    }
+    deleteComment.forEach(item=>{
+        item.removeEventListener('click',deleter)
+        item.addEventListener('click',deleter)
+    })
+}
 
 function actions(post) {
     const showComments = post.children[2];
@@ -113,7 +127,6 @@ function actions(post) {
     const commentsSubmit = commentsFormChildren[1];
     commentsSubmit.setAttribute('disabled', true);
 
-    const deleteComment = document.querySelectorAll('.delete-comment');
 
     showComments.addEventListener('click',(event)=>{
         const comments = event.target.nextElementSibling;
@@ -148,6 +161,7 @@ function actions(post) {
         postData.comments.forEach(item=> {
             commentsList.insertAdjacentHTML('afterbegin',comemntComponent(item))
         })
+        removeComment()
     }   renderPosts()
 
     function getComment(){
@@ -159,13 +173,8 @@ function actions(post) {
         localStorage.setItem('db', JSON.stringify(DB));
     }
     commentsSubmit.addEventListener('click',getComment)
-
-    deleteComment.forEach(item=>{
-        item.addEventListener('click',(event)=>{
-            event.target.parentElement.remove();
-        })
-    })
     
+    removeComment();
 }   
 
 
@@ -188,9 +197,11 @@ function getPost() {
 
     localStorage.setItem('db', JSON.stringify(DB));
     const posts = document.querySelectorAll('.post');
-    console.log(posts[0]);
     actions(posts[0]);
-    
 }
+removeComment();
+
+
+
 
 
