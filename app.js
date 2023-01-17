@@ -74,8 +74,8 @@ function commentsComponent (item) {
 function postComponent (item) {
     return (
         `<article class='post'>
-        <h1 class='post-header'>${item.title}:</h1>
-        <p>${item.text}</p>
+        <h1 class='post-header'>${item.title}</h1>
+        <p class="post-text">${item.text}</p>
         <button class="show-comments">show comments</button>
         ${commentsComponent(item)}
     </article>`

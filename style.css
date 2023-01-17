@@ -53,7 +53,8 @@ label {
 .new-post, .form {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 100%;
+    max-width:600px
 }
 input,textarea {
     padding: 5px;
@@ -99,14 +100,15 @@ input:focus,textarea:focus {
     flex-direction: column;
     border-bottom: 1px solid rgba(213, 226, 222, 0.8);
     margin-bottom: 5px;
-    padding: 20px;
+    padding: 20px 60px;
     
 }
 .post-header {
     font-size: 24px;
     font-weight: 500;
     padding-bottom: 20px;
-    text-decoration:  underline;
+    text-align: center;
+    /* text-decoration:  underline; */
 
 }
 .post-text {
@@ -114,6 +116,10 @@ input:focus,textarea:focus {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    border-radius: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(73, 73, 73);
+    padding: 20px;
 }
 .show-comments, .string-btn {
     font-size: 16px;
