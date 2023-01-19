@@ -20,7 +20,7 @@ const dbScheme = {
         },
     ],
 }
-const DB = JSON.parse(localStorage.getItem('db'));
+const DB = JSON.parse(localStorage.getItem('db')) || {posts:[]};
 
 function createDB(){
     if(localStorage.getItem('db')) {
